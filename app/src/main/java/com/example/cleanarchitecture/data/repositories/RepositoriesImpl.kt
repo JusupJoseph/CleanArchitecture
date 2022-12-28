@@ -1,8 +1,8 @@
 package com.example.cleanarchitecture.data.repositories
 
-import android.content.SharedPreferences
 import com.example.cleanarchitecture.data.local.sharedpreferences.UserPreferencesHelper
 import com.example.cleanarchitecture.domain.repositories.UserInfoRepository
+import java.util.*
 import javax.inject.Inject
 
 class RepositoriesImpl @Inject constructor(
@@ -21,12 +21,8 @@ class RepositoriesImpl @Inject constructor(
         preferences.password = password
     }
 
-    override fun getUserName() = preferences.username!!
+    val UserInfo = arrayOf(preferences.userage, preferences.username, preferences.password, preferences.useremail)
 
-    override fun getUserAge() = preferences.userage!!
-
-    override fun getUserEmail() = preferences.useremail!!
-
-    override fun getUserPassword() = preferences.password!!
+    override fun getUserInfo() = Arrays.toString(UserInfo)
 
 }
