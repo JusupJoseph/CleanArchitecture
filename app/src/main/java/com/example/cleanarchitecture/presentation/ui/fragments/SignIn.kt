@@ -13,18 +13,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignIn : Fragment() {
-    private var _binding: FragmentSignInBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModels<UserViewModel>()
+    lateinit var binding : FragmentSignInBinding
+    private val viewModel by viewModels<SignInViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSignInBinding.inflate(layoutInflater)
-        val view = binding.root
-        return view
+        binding = FragmentSignInBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,11 +44,4 @@ class SignIn : Fragment() {
             }
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-
 }
